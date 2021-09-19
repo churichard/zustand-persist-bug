@@ -8,6 +8,7 @@ function App() {
   const increaseBirds = useStore((state) => state.increaseBirds);
   const increaseBears = useStore((state) => state.increaseBears);
 
+  // Comment out this useEffect and it works fine
   useEffect(() => {
     increaseBirds();
   }, [increaseBirds]);
