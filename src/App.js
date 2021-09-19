@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+import { useEffect } from 'react';
+import { useStore } from './store';
 import './App.css';
 
 function App() {
+  const bears = useStore((state) => state.bears);
+  const birds = useStore((state) => state.birds);
+  const increaseBirds = useStore((state) => state.increaseBirds);
+  const increaseBears = useStore((state) => state.increaseBears);
+
+  useEffect(() => {
+    increaseBirds();
+  }, [increaseBirds]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div>Number of bears: {bears}</div>
+      <div>Number of birds: {birds}</div>
+      <button onClick={increaseBears}>Increase bears</button>
     </div>
   );
 }
